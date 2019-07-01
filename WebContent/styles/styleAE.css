@@ -1,0 +1,97 @@
+.FormHeader{
+    padding: 8px;
+    box-sizing: border-box;
+    background-color: rgb(35, 203, 167) ;
+    color: white;
+    margin: 0px 0px 10px 0px;
+     border-radius: 5px 5px 0px 0px; 
+   
+}
+.FormSides{
+    padding: 0px;
+    padding-bottom: 20px !important;
+    
+}
+#contentHeader{
+    box-sizing: border-box;
+    padding: 0px 2%;
+    background-color: white;
+    padding-bottom:  10px;
+      box-shadow:  0 0.1em 1em rgba(0, 0, 0, 0.1);
+   margin-bottom: 15px;
+}
+
+#left {
+ padding: 0px 0px 20px 0px;
+    background-color: white;
+     box-shadow:  0 0.375em 1em rgba(0, 0, 0, 0.1);
+  border-radius: 5px; 
+}
+
+#right{
+ padding: 0px 0px 20px 0px;
+ box-shadow:  0 0.375em 1em rgba(0, 0, 0, 0.1);
+    border-radius: 5px; 
+    background-color: white;
+  
+}
+
+#r ,#l{
+    padding: 0px 5px 15px 5px;
+    
+}
+
+#left label , #right label {
+    padding-top : 10px; 
+    color: rgba(0,0,0,0.7);
+}
+
+.labelDetails{
+        padding-left: 10px; 
+        color : gray !important;
+    } 
+    
+.modal-header {
+        background-color: #2ecc71 !important;
+        color : white !important;
+        border-radius: 5px !important;
+    }
+    
+  .pre{
+            width : 100%;
+           height: auto;
+        }
+        
+ .addimage , #additemIMG1{
+            border-radius: 200px;
+           margin-top: 10px !important;
+            width : 150px;
+            height : 150px;
+             cursor: pointer;
+            box-sizing: 5px 0px 5px gray;
+            
+        }
+       
+        input[type="file"] {
+    display: none;
+}
+.logout{
+	text-decoration: none;
+    cursor: pointer;
+}
+a.addPaymentBtn{
+	text-decoration: none !important;
+	color : white  !important;
+}
+.success{
+	color : #2ecc71;
+	
+}
+.danger{
+	
+	color :  #e74c3c;
+}
+.danger , .success{
+	padding : 2px 4px;
+	border-radius : 2px;
+}

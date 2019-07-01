@@ -1,0 +1,51 @@
+@charset "ISO-8859-1";
+
+.cards{
+	color : white;
+	padding : 0px 10px 5px 15px;
+	  box-shadow:  0 0.1em 1em rgba(0, 0, 0, 0.1);
+	  margin : 5px;
+	  border-radius : 8px;
+}
+.today{
+	color : #34495e  !important;
+	background-color :white !important;
+	border : 3px solid  #34495e !important;
+}
+.datecards{
+	background-color : white;
+	color :  #34495e;
+	padding : 5px 10px;
+	  box-shadow:  0 0.1em 1em rgba(0, 0, 0, 0.1);
+	  margin : 5px;
+	  border-radius : 5px;
+	  border : 3px solid  white; 
+}
+.cardholder{
+	padding : 0px 5px 5px 0px !important;
+}
+
+.cardNo{
+	font-size : 3.1em !important;
+	margin : 10px 0px 0px 0px;
+}
+
+#card1{
+	
+	background: no-repeat center right url("../images/employee.png")  , linear-gradient(87deg,#5e72e4 0,#825ee4 100%)!important;
+}	
+
+#card2{
+	background: url("../images/department2.png") no-repeat center right,linear-gradient(87deg,#11cdef 0,#1171ef 100%)!important;
+}
+
+#card3{
+	background: url("../images/designation.png") no-repeat center right,linear-gradient(87deg, rgb(245, 54, 92) 0px, rgb(245, 96, 54) 100%) !important;
+}
+
+#card4{
+	background: url("../images/mail2.png") no-repeat center right,linear-gradient(87deg,#172b4d 0,#1a174d 100%)!important;
+}
+.announcement{
+	border-bottom: 2px solid #f1f1f1;
+}

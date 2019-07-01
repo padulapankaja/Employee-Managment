@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- by Amoda Sasmitha IT18130508 SQL queries -->
+<Querys>
+
+	<!-- Add Employee to Database Query -->
+	<query id="insert_employee">
+         <![CDATA[        
+            INSERT INTO employee( Fname, Lname, DOB, Gender, MaritalStatus, SpouseName, Nationality, NIC, Address, City, ZipCode,
+            Mobile, Phone, Email, Eno, Department, Designation, BankName, BranchName, AccountNo, Uname, Password, Admin,ImagePath
+            ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        ]]>
+	</query>
+	
+	<!-- Get Last Added Record Query  -->
+	<query id="last_added_employee">
+         <![CDATA[        
+            SELECT LAST_INSERT_ID();
+        ]]>
+	</query>
+	
+	<!-- Select all employees -->
+	<query id="all_employees">
+         <![CDATA[        
+            select * from employee
+        ]]>
+	</query>
+	
+	<!-- Search employees and payments -->
+	<query id="search_by_EmpID">
+         <![CDATA[        
+            where EmpID = 
+        ]]>
+	</query>
+	<!-- Search payments -->
+	<query id="search_by_Month">
+         <![CDATA[        
+            where StartDate = 
+        ]]>
+	</query>
+	<!-- Search employees -->
+	<query id="search_by_Fname">
+         <![CDATA[        
+             where Fname LIKE  
+        ]]>
+	</query>
+	
+	
+	<!-- Update employees -->
+	<query id="update_employee">
+         <![CDATA[        
+            UPDATE employee SET Fname = ?, Lname = ?, DOB = ? , Gender = ? , 
+            MaritalStatus  = ?, SpouseName = ? , Nationality = ? , NIC = ?,
+            Address = ? , City = ?, ZipCode = ?, Mobile = ?, Phone = ?, Email = ?, 
+            Eno = ?, Department = ?, Designation = ?, 
+            BankName = ?, BranchName = ?, AccountNo = ?  WHERE EmpID = ?
+            
+        ]]>
+	</query>
+	
+		<!-- Select an employee by using EmpId -->
+	<query id="selected_employee">
+         <![CDATA[        
+            select * from employee where EmpID = ? 
+        ]]>
+	</query>
+	
+		<!-- Delete an employee by using EmpId -->
+	<query id="delete_employee">
+         <![CDATA[        
+            delete from employee where EmpID = ? 
+        ]]>
+	</query>
+	
+	<!-- Update Employee profile picture by using EmpId -->
+	<query id="update_profile_pic">
+         <![CDATA[        
+            update employee set ImagePath = ? where EmpID = ?
+        ]]>
+	</query>
+	
+	<!-- check wheather username and password match with an employee -->
+	<query id="authenticate_employee">
+         <![CDATA[        
+            select EmpID , Fname, Lname, Admin, ImagePath from employee where Uname = ? and Password = ?
+        ]]>
+	</query>
+<!-- - - - - - - - - - - - - - - - -Mail Compose - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->	
+	<!-- Compose Mail to database query -->
+	<query id="compose_mail">
+         <![CDATA[        
+           insert into mail (senderID, receiverID, title, message, sentTime , sentDate ) values( ?, ?, ? , ?, ?, ?)
+
+        ]]>
+	</query>
+	
+	<!-- view all receive Mails in database query -->
+	<query id="view_all_receive_mails">
+         <![CDATA[        
+           SELECT * from mail where receiverID = ? order by mailID DESC
+
+        ]]></query>
+        
+        <!-- view all Mails in database query -->
+	<query id="view_all_send_mails">
+         <![CDATA[        
+           SELECT * from mail where senderID = ? order by mailID DESC
+
+        ]]></query>
+     
+     <!-- view  Mail when mailId is given in database query -->
+	<query id="view_mail">
+         <![CDATA[        
+           SELECT * from mail where mailID = ?
+
+        ]]></query>
+        
+         <!-- read  Mail when mailId is given in database query -->
+	<query id="read_mail">
+         <![CDATA[        
+           UPDATE mail SET ReadStatus = ? , readDate = ?, readTime = ?  WHERE mailID = ?
+        ]]></query>
+              
+         <!-- delete mail in database query -->
+	<query id="delete_mail">
+         <![CDATA[        
+           DELETE FROM mail WHERE mailID = ?
+        ]]></query>
+                      
+         <!-- unread mail count in database query -->
+	<query id="mail_count">
+         <![CDATA[        
+         select count(*) from mail where receiverID = ? and ReadStatus = 0 
+        ]]></query>
+        
+<!-- - - - - - - - - - - - - - - - -Announcement Queries - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->	     
+         <!-- add announcement into database query -->
+	<query id="add_announcement">
+         <![CDATA[        
+          INSERT INTO announcement (EmpID, Type, Title, AnnouncementText, Date) VALUES (? , ? , ?, ? , ? );
+        ]]></query>
+        
+        <!-- view all announcements in database query -->
+	<query id="view_all_announcement">
+         <![CDATA[        
+          SELECT * FROM announcement order by Type  DESC, AnnID DESC
+
+        ]]></query>
+        <!-- delete announcement in database query -->
+	<query id="delete_announcement">
+         <![CDATA[        
+          DELETE FROM announcement WHERE AnnID = ?
+        ]]></query>
+        
+        <query id="select_announcement">
+         <![CDATA[        
+          Select * FROM announcement WHERE AnnID = ?
+        ]]></query>
+        
+        <query id="edit_announcement">
+         <![CDATA[        
+         UPDATE announcement SET Type = ? , Title = ?, AnnouncementText = ? WHERE AnnID = ?
+        ]]></query>
+<!-- - - - - - - - - - - - - - - - -Payment Queries - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->			
+		
+		<query id="insert_payment">
+         <![CDATA[INSERT INTO payment(EmpID, DeptID, StartDate, EndDate, BasicSalary, DearnessAllowance, MedicalAllowance,HouseRentAllowance,FoodAllowance, TelephoneAllowance, Bonus, Other, ProfessionalTax, ProvidetTax, Loan, Insurance,TotalIncome,TotalDeduction, TotalAmount) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)]]>
+		</query>
+
+		<!-- Add Employee to Database Query -->
+		<query id="search_payments">
+         <![CDATA[  select distinct e.EmpID, e.Fname, e.Lname , e.Designation , e.Mobile  FROM employee e  LEFT JOIN payment p
+    ON e.EmpID = p.EmpID where  e.Department = ? and e.EmpID not IN ( select p.EmpID from payment p where p.EndDate >= ?  and  p.EndDate <= ? )
+		  ]]>
+		</query>
+			<!-- Add Employee to Database Query -->
+			<query id="all_payments">
+		         <![CDATA[  select * FROM payment order by PaymentId desc
+		          ]]>
+		</query>
+		
+		<!-- select  Employee payment to specific month to Database Query -->
+			<query id="employee_payment_acc_month">
+		         <![CDATA[  select * FROM payment where EmpID = ? and  StartDate >= ?  and  EndDate <= ?
+		          ]]>
+		</query>
+		
+		<!-- select sepecific payment  Database Query -->
+			<query id="view_employee_paymnet">
+		         <![CDATA[  select * FROM payment where PaymentId = ?
+		          ]]>
+		</query>
+		
+		<!-- select sepecific payment  Database Query -->
+			<query id="update_payment">
+		         <![CDATA[ UPDATE payment SET BasicSalary = ?, DearnessAllowance = ?, MedicalAllowance = ?, HouseRentAllowance = ?, 
+		         FoodAllowance = ?,  TelephoneAllowance  = ?,  Bonus = ?, Other = ?, ProfessionalTax = ?, ProvidetTax = ?, 
+		         Loan = ?, Insurance = ?, TotalIncome = ?, TotalDeduction = ?, TotalAmount = ? WHERE PaymentId = ? 
+
+		          ]]>
+		</query>
+		
+		
+<!-- - - - - - - - - - - - - - - - - - - -Common Util Queries - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->	
+		<query id="common_counts">
+		         <![CDATA[ Select 
+				(select count(*) from emc.employee ) as "Employees",
+				(select count(*) from (Select Designation FROM emc.employee group by  Designation)d1 ) as "Departments",
+				(select count(*) from (Select Designation FROM emc.employee group by  Designation)d2 ) as "Designations",
+				(select count(*) from mail where receiverID = ? and ReadStatus = 0 ) as "New Mails"
+		          ]]>
+		</query>
+		
+		<query id="view_employee_acc_dept">
+         <![CDATA[ Select * from employee where Department = ? ]]>
+		</query>
+		
+		<query id="view_birthdays">
+         <![CDATA[ SELECT * FROM employee where month(DOB ) = ? ]]>
+		</query>
+
+<!-- - - - - - - - - - - - - - - - - - - -Attendance Queries - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->	
+			<!-- Add Attendace to Database Query -->
+			<query id="add_attendance">
+		         <![CDATA[  INSERT INTO attendance ( EmpID , DepID, AttDate, Att) VALUES ( ?, ?, ?, ?)  ]]>
+			</query>
+			
+			<!-- get Attendace of employee according to a month Query -->
+			<query id="get_emp_attendance_acc_month">
+		         <![CDATA[ SELECT AttDate,Att FROM attendance where EmpID = ? and AttDate >= ? and AttDate <= ? order by  AttDate  ]]>
+			</query>
+			
+			<!-- Attendace search acc to date and department Query -->
+			<query id="get_attendance_acc_date">
+		         <![CDATA[ SELECT AttendanceID, EmpID, Att FROM emc.attendance where AttDate = ? and DepID = ?  ]]>
+			</query>
+			
+			<!-- update Attendace Query -->
+			<query id="update_attendance">
+		         <![CDATA[ UPDATE attendance SET Att = ? WHERE AttendanceID = ?  ]]>
+			</query>
+<!-- - - - - - - - - - - - - - - - - - - -Leave Queries - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+			<!-- add leave to database query -->
+			<query id="add_leave">
+		         <![CDATA[        
+		          insert into userleave( EmpId, DeptId, StartDate, EndDate, DateCount , UserDescription, Status ) values( ? , ? , ? , ? , ? , ? , ?)
+		
+		        ]]>
+			</query>
+			<!-- select all leaves of an selected employee -->
+			<query id="list_leaves">
+		         <![CDATA[        
+		            select * from userleave where EmpId = ? order by LeaveId DESC
+		        ]]>
+			</query>
+		
+			<!-- select all leaves to accept -->
+			<query id="list_all-leaves">
+		         <![CDATA[        
+		            select * from userleave where Status != "Pending" order by LeaveId DESC
+		        ]]>
+			</query>
+			<!-- select all pending leaves to accept -->
+			<query id="list_all_pending_leaves">
+		         <![CDATA[        
+		            select * from userleave where Status = 'Pending' order by LeaveId DESC
+		        ]]>
+			</query>
+			<!-- Update leave status for given LeaveID -->
+			<query id="manage_leave">
+		         <![CDATA[        
+		            update userleave set Status= ? , AdminDescription = ? where LeaveId = ? 
+		        ]]>
+			</query>
+<!-- - - - - - - - - - - - - - - - - - - -Departments Queries - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+			<!-- view Departments  database query -->
+			<query id="view_departments">
+		         <![CDATA[        
+		          Select * from departments
+		        ]]>
+			</query>
+
+</Querys>
